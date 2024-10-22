@@ -1,0 +1,66 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/3/a/RAM8.hdl
+/**
+
+ * Memory of eight 16-bit registers.
+ * If load is asserted, the value of the register selected by
+ * address is set to in; Otherwise, the value does not change.
+ * The value of the selected register is emitted by out.
+ */
+CHIP RAM8 {
+    IN in[16], load, 
+        address[3]; // 3 bits; can represent 0-7 indexed registers; a total of 8 registers
+    OUT out[16];
+
+    PARTS:
+        DMux8Way(in=load, sel=address, a=load0, b=load1, c=load2, d=load3, e=load4, f=load5, g=load6, h=load7);
+        Register(in=in, load=load7, out=regstr7);
+        Register(in=in, load=load6, out=regstr6);
+        Register(in=in, load=load5, out=regstr5);
+        Register(in=in, load=load4, out=regstr4);
+        Register(in=in, load=load3, out=regstr3);
+        Register(in=in, load=load2, out=regstr2);
+        Register(in=in, load=load1, out=regstr1);
+        Register(in=in, load=load0, out=regstr0);
+        Mux8Way16(a=regstr0, b=regstr1, c=regstr2, d=regstr3, e=regstr4, f=regstr5, g=regstr6, h=regstr7, sel=address, out=out);
+}
+
+/* CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h:
+ * [a, b, c, d, e, f, g, h] = [in, 0,  0,  0,  0,  0,  0,  0] if sel = 000
+ *                            [0, in,  0,  0,  0,  0,  0,  0] if sel = 001
+ *                            [0,  0, in,  0,  0,  0,  0,  0] if sel = 010
+ *                            [0,  0,  0, in,  0,  0,  0,  0] if sel = 011
+ *                            [0,  0,  0,  0, in,  0,  0,  0] if sel = 100
+ *                            [0,  0,  0,  0,  0, in,  0,  0] if sel = 101
+ *                            [0,  0,  0,  0,  0,  0, in,  0] if sel = 110
+ *                            [0,  0,  0,  0,  0,  0,  0, in] if sel = 111
+*/
+
+ /* CHIP Register {
+    IN in[16], load;
+    OUT out[16];
+    if (load(t)) 
+        out(t+1) = int(t)
+    else
+        out(t+1) = out(t)
+ */
+
+
+/*
+ * CHIP Mux8Way16 {
+    IN a[16], b[16], c[16], d[16],
+       e[16], f[16], g[16], h[16],
+       sel[3]:
+ * out = a if sel = 000 || sel[2] sel[1] sel[0]
+ *       b if sel = 001 || sel[2] sel[1] sel[0]
+ *       c if sel = 010 || sel[2] sel[1] sel[0]
+ *       d if sel = 011 || sel[2] sel[1] sel[0]
+ *       e if sel = 100 || sel[2] sel[1] sel[0]
+ *       f if sel = 101 || sel[2] sel[1] sel[0]
+ *       g if sel = 110 || sel[2] sel[1] sel[0]
+ *       h if sel = 111 || sel[2] sel[1] sel[0]
+ */
