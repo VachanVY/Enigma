@@ -12,6 +12,8 @@ Building a Computer from First Principles
 ## Part 2
 * ![image](https://github.com/user-attachments/assets/3cd96a7a-573d-447d-b308-00287f1ec547)
 * ![image](https://github.com/user-attachments/assets/3e618fea-83a4-4871-92d7-68cee451f728)
+* ![image](https://github.com/user-attachments/assets/90228f26-b90d-40d3-85c4-53f52d56d5f2)
+
 
 
 
