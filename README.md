@@ -15,6 +15,8 @@ Building a Computer from First Principles
 * ![image](https://github.com/user-attachments/assets/90228f26-b90d-40d3-85c4-53f52d56d5f2)
 * project 7: testing details
   ![image](https://github.com/user-attachments/assets/6c16e17c-5e17-4888-8115-465439e0a065)
+  ![image](https://github.com/user-attachments/assets/523b3520-7116-4eea-9b80-26e6d623bb72)
+
 
 
 
